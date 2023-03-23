@@ -11,8 +11,7 @@ COPY . ./
 
 # Install Python
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    software-properties-common libcurl4-openssl-dev libssl-dev wget && \
+    apt install -y software-properties-common  && \
     add-apt-repository -y ppa:deadsnakes/ppa && \
     rm -rf /var/lib/apt/lists/*
 
@@ -21,6 +20,8 @@ RUN apt-get update && \
     python3.8 python3-dev python3-pip python3-opencv \
     build-essential git && \
     rm -rf /var/lib/apt/lists/*
+
+RUN pwd
 
 # Prepare Python Dependencies
 RUN python3 -m pip install --upgrade pip==21.2.2 && \
